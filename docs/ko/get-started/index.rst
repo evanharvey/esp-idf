@@ -1,59 +1,59 @@
 ***********
-Get Started
+시작하기
 ***********
 
 :link_to_translation:`zh_CN:[中文]`
 
-This document is intended to help you set up the software development environment for the hardware based on the ESP32 chip by Espressif.
+이 문서는 Espressif 사의 ESP32 펌웨어를 개발하기 위한 호스트 PC의 개발 환경 구축에 대한 내용이 담겨 있습니다.
 
-After that, a simple example will show you how to use ESP-IDF (Espressif IoT Development Framework) for menu configuration, then building, and flashing firmware onto an ESP32 board.
+환경 구축이 완료 되면 간단한 예제 프로젝트를 통해 ESP-IDF (Espressif IoT 개발 프레임워크) 를 이용한 빌드, 프로젝트 설정 방법에 대해 알아보고 최종적으로는 ESP32 보드에 플레싱까지 해볼 것 입니다.
 
 .. include:: /_build/inc/version-note.inc
 
-Introduction
+개요
 ============
 
-ESP32 is a system on a chip that integrates the following features:
+ESP32 는 다음과 같은 기능이 내장되어 있습니다.
 
-* Wi-Fi (2.4 GHz band)
+* Wi-Fi (2.4GHz 대역)
 * Bluetooth 4.2
-* Dual high performance cores
-* Ultra Low Power co-processor
-* Several peripherals
+* 고성능 듀얼 코어
+* 저전력 Co 프로세서
+* 여러 주변 장치들
 
-Powered by 40 nm technology, ESP32 provides a robust, highly integrated platform, which helps meet the continuous demands for efficient power usage, compact design, security, high performance, and reliability.
+ESP32 는 40nm 반도체 기술 그리고 강력한 개발 플랫폼을 바탕으로 저전력, 소형화 설계, 보안, 고성능 및 신뢰성에 대한 지속적인 요구를 충족시킬 수 있도록 지원합니다.
 
-Espressif provides basic hardware and software resources to help application developers realize their ideas using the ESP32 series hardware. The software development framework by Espressif is intended for development of Internet-of-Things (IoT) applications with Wi-Fi, Bluetooth, power management and several other system features.
+Espressif 는 애플리케이션 개발자들이 ESP32 하드웨어를 사용하여 아이디어를 실현할 수 있도록 기본적인 하드웨어 그리고 소프트웨어의 리소스를 제공합니다. Espressif 의 소프트웨어 개발 프레임워크는 Wi-Fi, Bluetooth, 전원 관리 및 여러 시스템을 갖춘 IoT (Internet Of Things) 애플리케이션을 개발하기 위해 제작되었습니다.
 
-What You Need
+무엇이 필요하나요?
 =============
 
-Hardware:
+하드웨어:
 
-* An **ESP32** board
-* **USB cable** - USB A / micro USB B
-* **Computer** running Windows, Linux, or macOS
+* **ESP32** 보드
+* **USB 케이블** - USB A / micro USB B
+* **컴퓨터** 윈도우, 리눅스 혹은 MacOS 운영체제가 설치되어 있어야 함.
 
-Software:
+소프트웨어:
 
-* **Toolchain** to compile code for ESP32
-* **Build tools** - CMake and Ninja to build a full **Application** for ESP32
-* **ESP-IDF** that essentially contains API (software libraries and source code) for ESP32 and scripts to operate the **Toolchain**
-* **Text editor** to write programs (**Projects**) in C, e.g., `Eclipse <https://www.eclipse.org/>`_
+* **툴체인** ESP32 코드를 빌드하기 위한 툴체인 컴파일러
+* **빌드 도구** - CMake, Ninja
+* **ESP-IDF** 펌웨어 라이브러리, 소스코드
+* **에디터** C 코드를 작성하기 위한 프로그램 Ex. `Eclipse <https://www.eclipse.org/>`_
 
 
 .. figure:: ../../_static/what-you-need.png
     :align: center
-    :alt: Development of applications for ESP32
+    :alt: ESP32 애플리케이션 개발 방식
     :figclass: align-center
 
-    Development of applications for ESP32
+    ESP32 애플리케이션 개발 방식
 
 
-Development Board Overviews
+공식 개발 보드
 ===========================
 
-If you have one of ESP32 development boards listed below, you can click on the link to learn more about its hardware.
+아래의 보드를 갖고 있는 경우 링크를 클릭하여 하드웨어에 대한 상세 정보를 확인할 수 있습니다.
 
 .. toctree::
     :maxdepth: 1
@@ -66,12 +66,12 @@ If you have one of ESP32 development boards listed below, you can click on the l
 
 .. _get-started-step-by-step:
 
-Installation Step by Step
+ESP-IDF 설치 방법
 =========================
 
-This is a detailed roadmap to walk you through the installation process.
+아래는 ESP-IDF를 설치하기 위한 상새 목차 입니다.
 
-Setting up Development Environment
+개발 환경 구축
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * :ref:`get-started-get-prerequisites` for :doc:`Windows <windows-setup>`, :doc:`Linux <linux-setup>` or :doc:`macOS <macos-setup>`
@@ -79,7 +79,7 @@ Setting up Development Environment
 * :ref:`get-started-set-up-tools`
 * :ref:`get-started-set-up-env`
 
-Creating Your First Project
+첫 프로젝트 생성
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * :ref:`get-started-start-project`
@@ -92,7 +92,7 @@ Creating Your First Project
 
 .. _get-started-get-prerequisites:
 
-Step 1. Install prerequisites
+Step 1. 필수 구성 요소 설치
 =============================
 
 Some tools need to be installed on the computer before proceeding to the next steps. Follow the links below for the instructions for your OS:
