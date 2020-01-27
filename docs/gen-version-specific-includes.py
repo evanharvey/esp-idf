@@ -116,7 +116,60 @@ TEMPLATES = {
      这是ESP-IDF %s ``%s`` 版本的文档，还有其他版本的文档 :doc:`/versions` 供参考。
 """
         },  # version-note
-    }  # zh_CN
+    },  # zh_CN
+    "ko": {
+        "git-clone-bash": """
+.. code-block:: bash
+
+    cd ~/esp
+    git clone %(clone_args)s--recursive https://github.com/espressif/esp-idf.git
+        """,
+
+        "git-clone-windows": """
+.. code-block:: batch
+
+    mkdir %%userprofile%%\\esp
+    cd %%userprofile%%\\esp
+    git clone %(clone_args)s--recursive https://github.com/espressif/esp-idf.git
+            """,
+
+        "git-clone-notes": {
+            "template": """
+.. note::
+
+    %(extra_note)s
+
+.. note::
+
+    %(zipfile_note)s
+""",
+            "master": 'This command will clone the master branch, which has the latest development ("bleeding edge") '
+            'version of ESP-IDF. It is fully functional and updated on weekly basis with the most recent features and bugfixes.',
+            "branch": 'The ``git clone`` option ``-b %(clone_arg)s`` tells git to clone the %(ver_type)s in the ESP-IDF repository ``git clone`` '
+            'corresponding to this version of the documentation.',
+            "zipfile": {
+                "stable": 'As a fallback, it is also possible to download a zip file of this stable release from the `Releases page`_. '
+                          'Do not download the "Source code" zip file(s) generated automatically by GitHub, they do not work with ESP-IDF.',
+                "unstable": 'GitHub\'s "Download zip file" feature does not work with ESP-IDF, a ``git clone`` is required. As a fallback, '
+                            '`Stable version`_ can be installed without Git.'
+            },  # zipfile
+        },  # git-clone-notes
+        "version-note": {
+            "master": """
+.. note::
+     This is documentation for the master branch (latest version) of ESP-IDF. This version is under continual development.
+     `Stable version`_ documentation is available, as well as other :doc:`/versions`.
+""",
+            "stable": """
+.. note::
+     This is documentation for stable version %s of ESP-IDF. Other :doc:`/versions` are also available.
+""",
+            "branch": """
+.. note::
+     This is documentation for %s ``%s`` of ESP-IDF. Other :doc:`/versions` are also available.
+"""
+        },  # version-note
+    }  # ko
 }
 
 
